@@ -1,0 +1,170 @@
+@font-face {
+   font-family: 'Roboto';
+   src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+html, body{
+   height:100%;
+}
+
+body {
+   margin: 0px;
+   border: 0px;
+   padding: 0px;
+   direction: ltr;
+   background: url("../pulse-logo.png") no-repeat scroll center 45% #F4F4F4;
+   font-family: Roboto, Sans-Serif;
+}
+
+.main{
+   height:100%;
+}
+
+.padding{
+   display: block;
+   width: 100%;
+   height: 50%;
+}
+
+.login {
+   padding-top: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+}
+
+.alert{
+   padding: 10px;
+   margin-top: 15px;
+}
+
+
+.form-control::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+   color: #AAA;
+}
+
+.form-control::-moz-placeholder {  /* Firefox */
+   color: #AAA;
+}
+
+.form-control:-ms-input-placeholder { /* IE */
+   color: #AAA;
+}
+
+.form-control::-ms-input-placeholder { /* Edge */
+   color: #AAA;
+}
+
+
+.form-group {
+   position: relative;
+   float: left;
+}
+input.form-control {
+   background: #fff;
+   font-size: 14px;
+   border: solid 1px #D1D1D1;
+   padding: 7px 10px;
+   margin: 0;
+   height: auto;
+   box-shadow: none;
+   border-radius: 3px;
+   font-family: Roboto, sans-serif;
+   font-weight: 700;
+   width: 250px !important;
+}
+
+
+
+.pink-button {
+   color: #FFF !important;
+   background: #418EFA;
+   /*
+   position: relative;
+   */
+   border: solid 1px #237DFA;
+   text-transform: uppercase;
+   border-radius: 3px;
+   margin: 0 5px;
+   text-align: center;
+   font-size: 14px;
+   font-weight: 700;
+   width: 120px;
+   padding: 7px 0;
+}
+
+@-webkit-keyframes blink {
+   0% { opacity: 1; }
+   50% { opacity: 0.6; }
+   100% { opacity: 1; }
+}
+@-moz-keyframes blink {
+   0% { opacity: 1; }
+   50% { opacity: 0.6; }
+   100% { opacity: 1; }
+}
+@-o-keyframes blink {
+   0% { opacity: 1; }
+   50% { opacity: 0.6; }
+   100% { opacity: 1; }
+}
+
+.blink {
+   -webkit-animation: blink 1s;
+   -webkit-animation-iteration-count: infinite;
+   -moz-animation: blink 1s;
+   -moz-animation-iteration-count: infinite;
+   -o-animation: blink 1s;
+   -o-animation-iteration-count: infinite;
+}
+
+
+
+
+
+.vp-footer {
+   width: 100%;
+   height: 70px;
+   position: absolute;
+   bottom: 0;
+   background: none;
+   background-color: transparent;
+   box-shadow: none;
+   font-size: 10px;
+   color: #9a9a9a;
+}
+
+.vp-footerLeft {
+ /*  position: absolute;
+   top: 20px;
+   left: 11px;
+   width: 260px;*/
+   padding-left: 35px;
+   padding-top: 30px;
+}
+
+ .vp-footerRight {
+   background: none;
+   text-align: right;
+   padding-right: 10px;
+   padding-top: 30px;
+
+}
+
+.vp-footerRight .footer-info-text a, a:hover, a:visited {
+   color: #9a9a9a;
+}
+
+ .vp-footerMiddle {
+/*   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;*/
+    height: 100%;
+   line-height: 59px;
+   text-align: center;
+   background: url("../invidi-logo-footer-dark.png") no-repeat center;
+}

